@@ -2,5 +2,7 @@
 name = "tint"
 version = "0.1.0"
 edition = "2021"
+description = "Simple terminal styles for Rust CLI interfaces. Inspired by Charmbracelet's Lip Gloss."
+license = "MIT"
 
 [dependencies]
