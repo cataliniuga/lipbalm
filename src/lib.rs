@@ -210,12 +210,6 @@ mod tests {
 
     #[test]
     fn simple_render() {
-        let lipbalm = Lipbalm::new()
-            .foreground(Color::Red)
-            .link("https://example.com")
-            .render("BINGBONG!");
-        println!("{}", lipbalm);
-
         let lipbalm = Lipbalm::new();
         let result = lipbalm.render("Hello, world!");
         assert_eq!(result, "\x1b[mHello, world!\x1b[0m");
