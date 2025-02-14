@@ -10,22 +10,22 @@ use styles::Styles;
 /// `render` to apply the styles to the text.
 /// Example:
 /// ```
-/// use tint::Tint;
-/// use tint::colors::Color;
-/// use tint::styles::Styles;
+/// use lipbalm::Lipbalm;
+/// use lipbalm::colors::Color;
+/// use lipbalm::styles::Styles;
 ///
-/// let tint = Tint::new()
+/// let lipbalm = Lipbalm::new()
 ///    .foreground(Color::Red)
 ///    .background(Color::Green)
 ///    .bold(true)
 ///    .underline(true)
 ///    .render("Hello, world!");
-/// println!("{}", tint);
+/// println!("{}", lipbalm);
 /// ```
 /// This will print "Hello, world!" in red text on a green background, with bold and underline
 /// styles.
 #[derive(Debug, Clone)]
-pub struct Tint {
+pub struct Lipbalm {
     foreground: Option<Color>,
     background: Option<Color>,
 
@@ -41,9 +41,9 @@ pub struct Tint {
     link: Option<String>,
 }
 
-impl Tint {
-    pub fn new() -> Tint {
-        Tint {
+impl Lipbalm {
+    pub fn new() -> Lipbalm {
+        Lipbalm {
             foreground: None,
             background: None,
             bold: false,
@@ -58,52 +58,52 @@ impl Tint {
         }
     }
 
-    pub fn bold(&mut self, yes: bool) -> &mut Tint {
+    pub fn bold(&mut self, yes: bool) -> &mut Lipbalm {
         self.bold = yes;
         self
     }
 
-    pub fn dim(&mut self, yes: bool) -> &mut Tint {
+    pub fn dim(&mut self, yes: bool) -> &mut Lipbalm {
         self.dim = yes;
         self
     }
 
-    pub fn italic(&mut self, yes: bool) -> &mut Tint {
+    pub fn italic(&mut self, yes: bool) -> &mut Lipbalm {
         self.italic = yes;
         self
     }
 
-    pub fn underline(&mut self, yes: bool) -> &mut Tint {
+    pub fn underline(&mut self, yes: bool) -> &mut Lipbalm {
         self.underline = yes;
         self
     }
 
-    pub fn blink(&mut self, yes: bool) -> &mut Tint {
+    pub fn blink(&mut self, yes: bool) -> &mut Lipbalm {
         self.blink = yes;
         self
     }
 
-    pub fn reverse(&mut self, yes: bool) -> &mut Tint {
+    pub fn reverse(&mut self, yes: bool) -> &mut Lipbalm {
         self.reverse = yes;
         self
     }
 
-    pub fn hidden(&mut self, yes: bool) -> &mut Tint {
+    pub fn hidden(&mut self, yes: bool) -> &mut Lipbalm {
         self.hidden = yes;
         self
     }
 
-    pub fn strikethrough(&mut self, yes: bool) -> &mut Tint {
+    pub fn strikethrough(&mut self, yes: bool) -> &mut Lipbalm {
         self.strikethrough = yes;
         self
     }
 
-    pub fn foreground(&mut self, color: Color) -> &mut Tint {
+    pub fn foreground(&mut self, color: Color) -> &mut Lipbalm {
         self.foreground = Some(color);
         self
     }
 
-    pub fn link(&mut self, link: &str) -> &mut Tint {
+    pub fn link(&mut self, link: &str) -> &mut Lipbalm {
         self.link = Some(link.to_string());
         self
     }
@@ -119,7 +119,7 @@ impl Tint {
         }
     }
 
-    pub fn background(&mut self, color: Color) -> &mut Tint {
+    pub fn background(&mut self, color: Color) -> &mut Lipbalm {
         self.background = Some(color);
         self
     }
@@ -198,9 +198,9 @@ impl Tint {
     }
 }
 
-impl default::Default for Tint {
-    fn default() -> Tint {
-        Tint::new()
+impl default::Default for Lipbalm {
+    fn default() -> Lipbalm {
+        Lipbalm::new()
     }
 }
 
@@ -210,20 +210,20 @@ mod tests {
 
     #[test]
     fn simple_render() {
-        let tint = Tint::new()
+        let lipbalm = Lipbalm::new()
             .foreground(Color::Red)
             .link("https://example.com")
             .render("BINGBONG!");
-        println!("{}", tint);
+        println!("{}", lipbalm);
 
-        let tint = Tint::new();
-        let result = tint.render("Hello, world!");
+        let lipbalm = Lipbalm::new();
+        let result = lipbalm.render("Hello, world!");
         assert_eq!(result, "\x1b[mHello, world!\x1b[0m");
     }
 
     #[test]
     fn with_styles() {
-        let result = Tint::new()
+        let result = Lipbalm::new()
             .bold(true)
             .underline(true)
             .foreground(Color::Red)
@@ -234,7 +234,7 @@ mod tests {
 
     #[test]
     fn with_link() {
-        let result = Tint::new()
+        let result = Lipbalm::new()
             .foreground(Color::Red)
             .link("https://example.com")
             .render("Hello, world!");
@@ -246,7 +246,7 @@ mod tests {
 
     #[test]
     fn with_hex_color() {
-        let result = Tint::new()
+        let result = Lipbalm::new()
             .foreground(Color::Hex("#ff0000"))
             .background(Color::Hex("#00ff00"))
             .render("Hello, world!");
@@ -258,7 +258,7 @@ mod tests {
 
     #[test]
     fn with_rgb_color() {
-        let result = Tint::new()
+        let result = Lipbalm::new()
             .foreground(Color::Rgb(255, 0, 0))
             .background(Color::Rgb(0, 255, 0))
             .render("Hello, world!");
@@ -270,7 +270,7 @@ mod tests {
 
     #[test]
     fn with_c256_color() {
-        let result = Tint::new()
+        let result = Lipbalm::new()
             .foreground(Color::C256(1))
             .background(Color::C256(2))
             .render("Hello, world!");
@@ -279,7 +279,7 @@ mod tests {
 
     #[test]
     fn with_reset_color() {
-        let result = Tint::new()
+        let result = Lipbalm::new()
             .foreground(Color::Red)
             .foreground(Color::Reset)
             .render("Hello, world!");
@@ -288,7 +288,7 @@ mod tests {
 
     #[test]
     fn with_unset_style() {
-        let result = Tint::new()
+        let result = Lipbalm::new()
             .bold(true)
             .underline(true)
             .bold(false)
