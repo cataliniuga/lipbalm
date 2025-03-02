@@ -58,52 +58,52 @@ impl Lipbalm {
         }
     }
 
-    pub fn bold(&mut self, yes: bool) -> &mut Lipbalm {
+    pub fn bold(mut self, yes: bool) -> Lipbalm {
         self.bold = yes;
         self
     }
 
-    pub fn dim(&mut self, yes: bool) -> &mut Lipbalm {
+    pub fn dim(mut self, yes: bool) -> Lipbalm {
         self.dim = yes;
         self
     }
 
-    pub fn italic(&mut self, yes: bool) -> &mut Lipbalm {
+    pub fn italic(mut self, yes: bool) -> Lipbalm {
         self.italic = yes;
         self
     }
 
-    pub fn underline(&mut self, yes: bool) -> &mut Lipbalm {
+    pub fn underline(mut self, yes: bool) -> Lipbalm {
         self.underline = yes;
         self
     }
 
-    pub fn blink(&mut self, yes: bool) -> &mut Lipbalm {
+    pub fn blink(mut self, yes: bool) -> Lipbalm {
         self.blink = yes;
         self
     }
 
-    pub fn reverse(&mut self, yes: bool) -> &mut Lipbalm {
+    pub fn reverse(mut self, yes: bool) -> Lipbalm {
         self.reverse = yes;
         self
     }
 
-    pub fn hidden(&mut self, yes: bool) -> &mut Lipbalm {
+    pub fn hidden(mut self, yes: bool) -> Lipbalm {
         self.hidden = yes;
         self
     }
 
-    pub fn strikethrough(&mut self, yes: bool) -> &mut Lipbalm {
+    pub fn strikethrough(mut self, yes: bool) -> Lipbalm {
         self.strikethrough = yes;
         self
     }
 
-    pub fn foreground(&mut self, color: Color) -> &mut Lipbalm {
+    pub fn foreground(mut self, color: Color) -> Lipbalm {
         self.foreground = Some(color);
         self
     }
 
-    pub fn link(&mut self, link: &str) -> &mut Lipbalm {
+    pub fn link(mut self, link: &str) -> Lipbalm {
         self.link = Some(link.to_string());
         self
     }
@@ -119,7 +119,7 @@ impl Lipbalm {
         }
     }
 
-    pub fn background(&mut self, color: Color) -> &mut Lipbalm {
+    pub fn background(mut self, color: Color) -> Lipbalm {
         self.background = Some(color);
         self
     }
